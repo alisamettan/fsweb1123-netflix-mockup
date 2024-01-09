@@ -18,10 +18,10 @@ function App() {
     <>
       <Switch>
         <Route path="/" exact>
-          <Main />
+          <Main loggedUser={loggedUser} />
         </Route>
         <Route path="/login" exact>
-          <Login />
+          <Login loggedUser={loggedUser} />
         </Route>
         <Route path="/welcome" exact>
           <Welcome changeUser={changeUser} />
