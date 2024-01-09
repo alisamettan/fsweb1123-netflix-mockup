@@ -12,13 +12,15 @@ const Hero = styled.div`
 `;
 
 const VideoFrame = styled.video`
-  width: 100%;
+  width: 120%;
+  aspect-ratio: 2.4/1;
   border: 0;
   position: absolute;
-  top: -100px;
-  left: 0;
+  top: 0;
+  left: -10%;
   right: 0;
   z-index: 1;
+  object-fit: cover;
 `;
 
 const MovieTitle = styled.p`
