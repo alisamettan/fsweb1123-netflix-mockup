@@ -1,6 +1,8 @@
 import Header from "../components/Header";
 import { Redirect } from "react-router-dom";
 import Promote from "../components/Promote";
+import MoviesSection from "../components/MoviesSection";
+import TopMoviesSection from "../components/topMovies/TopMoviesSection";
 
 export default function Browse(props) {
   const { loggedUser } = props;
@@ -14,7 +16,13 @@ export default function Browse(props) {
       <Header loggedUser={loggedUser} />
       <Promote />
 
-      <h1>{loggedUser.nickname} welcome to Browse page</h1>
+      <MoviesSection title="Because you watched Aliens" genre="Horror" />
+      <MoviesSection
+        title="Because you watched Fast and Furious"
+        genre="Action"
+      />
+      <TopMoviesSection title="Top 10 Movies in Turkey Today" />
+      <MoviesSection title="Because you like Comedy Movies" genre="Comedy" />
     </div>
   );
 }
