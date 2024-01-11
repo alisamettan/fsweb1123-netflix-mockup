@@ -2,7 +2,7 @@ import Header from "../components/Header";
 import SignUpForm from "../components/SignUpForm";
 import styled from "styled-components";
 
-const FullPage = styled.div`
+export const FullPage = styled.div`
   min-height: 100vh;
   display: flex;
   justify-content: center;
