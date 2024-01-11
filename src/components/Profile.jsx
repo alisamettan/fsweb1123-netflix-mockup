@@ -2,11 +2,11 @@ import { useHistory } from "react-router-dom";
 import "./Profile.css";
 
 export default function Profile(props) {
-  const { profile, changeUser } = props;
+  const { profile, changeProfile } = props;
   const history = useHistory();
 
   const handleClick = () => {
-    changeUser(profile);
+    changeProfile(profile);
     history.push("/browse");
   };
 

@@ -9,9 +9,14 @@ import { useState } from "react";
 
 function App() {
   const [loggedUser, setLoggedUser] = useState(null);
+  const [selectedProfile, setSelectedProfile] = useState(null);
 
   const changeUser = (user) => {
     setLoggedUser(user);
+  };
+
+  const changeProfile = (user) => {
+    setSelectedProfile(user);
   };
 
   return (
@@ -24,10 +29,10 @@ function App() {
           <Login loggedUser={loggedUser} changeUser={changeUser} />
         </Route>
         <Route path="/welcome" exact>
-          <Welcome changeUser={changeUser} />
+          <Welcome loggedUser={loggedUser} changeProfile={changeProfile} />
         </Route>
         <Route path="/browse" exact>
-          <Browse loggedUser={loggedUser} />
+          <Browse selectedProfile={selectedProfile} />
         </Route>
         <Route path="*">
           <NotFound />

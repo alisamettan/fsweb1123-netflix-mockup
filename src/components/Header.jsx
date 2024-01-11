@@ -3,6 +3,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 import NavMenu from "./NavMenu";
+import { useHistory } from "react-router-dom";
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -53,23 +54,30 @@ const UserName = styled.p`
 `;
 
 export default function Header(props) {
-  const { loggedUser } = props;
+  const { selectedProfile } = props;
+  const history = useHistory();
+
+  const handleSignInClick = () => {
+    history.push("/login");
+  };
 
   return (
     <HeaderContainer>
       <Logo>WiTFLiX</Logo>
-      {loggedUser ? (
+      {selectedProfile ? (
         <>
           <NavMenu />
           <UserPanel>
             <FontAwesomeIcon icon={faMagnifyingGlass} />
-            <UserName>{loggedUser.nickname}</UserName>
+            <UserName>{selectedProfile.nickname}</UserName>
             <FontAwesomeIcon icon={faBell} />
-            <Avatar src={loggedUser.avatar} />
+            <Avatar src={selectedProfile.avatar} />
           </UserPanel>
         </>
       ) : (
-        <SignInButton>Sign In</SignInButton>
+        <SignInButton data-test-id="signin-button" onClick={handleSignInClick}>
+          Sign In
+        </SignInButton>
       )}
     </HeaderContainer>
   );

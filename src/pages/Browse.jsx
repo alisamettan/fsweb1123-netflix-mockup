@@ -5,15 +5,15 @@ import MoviesSection from "../components/MoviesSection";
 import TopMoviesSection from "../components/topMovies/TopMoviesSection";
 
 export default function Browse(props) {
-  const { loggedUser } = props;
+  const { selectedProfile } = props;
 
-  if (!loggedUser) {
+  if (!selectedProfile) {
     return <Redirect to="/welcome" />;
   }
 
   return (
     <div>
-      <Header loggedUser={loggedUser} />
+      <Header selectedProfile={selectedProfile} />
       <Promote />
 
       <MoviesSection title="Because you watched Aliens" genre="Horror" />
