@@ -11,14 +11,19 @@ const ErrorText = styled.p`
 const initialForm = {
   nickname: "",
   email: "",
+  terms: false,
 };
+
 const initialErrors = {
   nickname: false,
   email: false,
+  terms: false,
 };
+
 const errorMessages = {
   nickname: "Name alanı en az 4 karakter olmalı.",
   email: "Geçerli bir email giriniz.",
+  terms: "Şartları kabul ederek kayıt işlemini tamamlayabilirsiniz.",
 };
 
 export default function SignUpForm({ changeUser }) {
@@ -29,7 +34,11 @@ export default function SignUpForm({ changeUser }) {
   const { push } = useHistory();
 
   useEffect(() => {
-    if (validateName(formData.nickname)) {
+    if (
+      validateName(formData.nickname) &&
+      validateEmail(formData.email) &&
+      formData.terms
+    ) {
       setIsValid(true);
     } else {
       setIsValid(false);
@@ -70,6 +79,14 @@ export default function SignUpForm({ changeUser }) {
         setErrors({ ...errors, [name]: true });
       }
     }
+
+    if (name === "terms") {
+      if (value) {
+        setErrors({ ...errors, [name]: false });
+      } else {
+        setErrors({ ...errors, [name]: true });
+      }
+    }
   };
 
   return (
@@ -80,10 +97,14 @@ export default function SignUpForm({ changeUser }) {
           type="text"
           id="nickname"
           name="nickname"
+          data-test-id="name-input"
           value={formData.nickname}
           onChange={handleChange}
         />
-        <ErrorText>{errors.nickname && errorMessages.nickname} </ErrorText>
+
+        {errors.nickname && (
+          <ErrorText data-test-id="error">{errorMessages.nickname}</ErrorText>
+        )}
       </div>
       <div>
         <label htmlFor="email">E-mail: </label>
@@ -91,12 +112,33 @@ export default function SignUpForm({ changeUser }) {
           type="email"
           id="email"
           name="email"
+          data-test-id="email-input"
           value={formData.email}
           onChange={handleChange}
         />
-        <ErrorText>{errors.email && errorMessages.email} </ErrorText>
+        {errors.email && (
+          <ErrorText data-test-id="error">{errorMessages.email}</ErrorText>
+        )}
       </div>
-      <button disabled={!isValid} type="submit">
+      <div>
+        <input
+          type="checkbox"
+          id="terms"
+          name="terms"
+          data-test-id="terms-checkbox"
+          checked={formData.terms}
+          onChange={handleChange}
+        />
+        <label htmlFor="terms">
+          {" "}
+          WitFlix kullanım şartlarını ve gizlilik kurallarını kabul ediyorum.
+        </label>
+
+        {errors.terms && (
+          <ErrorText data-test-id="error">{errorMessages.terms}</ErrorText>
+        )}
+      </div>
+      <button disabled={!isValid} data-test-id="signup-button" type="submit">
         Sign Up
       </button>
     </form>
