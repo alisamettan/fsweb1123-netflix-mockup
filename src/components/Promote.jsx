@@ -2,6 +2,7 @@ import styled from "styled-components";
 import PlayButton from "./buttons/PlayButton";
 import MoreInfo from "./buttons/MoreInfo";
 
+
 const Hero = styled.div`
   width: 100%;
   aspect-ratio: 2/1;

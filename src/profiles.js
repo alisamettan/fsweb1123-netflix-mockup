@@ -1,17 +1,17 @@
 export const profiles = [
   {
     id: "abcd-1234-gdtdy-1234",
-    nickname: "Emre",
-    avatar: "https://picsum.photos/300?1",
+    nickname: "Ali Samet Tan",
+    avatar: "src/assets/photos/IMG_3276.jpeg",
   },
   {
     id: "abcd-1234-gdtdy-0234",
-    nickname: "Gamze",
-    avatar: "https://picsum.photos/300?3",
+    nickname: "Alara Duru Karacabey",
+    avatar: "src/assets/photos/IMG_4569.jpeg",
   },
   {
     id: "abcd-1234-gdtdy-3234",
-    nickname: "Duru",
-    avatar: "https://picsum.photos/300?2",
+    nickname: "Özge Çapar",
+    avatar: "src/assets/photos/IMG_4842.jpg",
   },
 ];
